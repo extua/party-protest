@@ -1,12 +1,14 @@
 #[macro_use] extern crate rocket;
+use rocket::fs::{FileServer, relative};
 
-#[get("/")]
-fn index() -> &'static str {
+#[get("/world")]
+fn world() -> &'static str {
     "Hello, world!"
 }
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+    rocket::build().mount("/hello", routes![world])
+    .mount("/assets", FileServer::from(relative!("/assets")))
 }
 
