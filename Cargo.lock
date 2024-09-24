@@ -1184,6 +1184,11 @@ dependencies = [
 [[package]]
 name = "shared"
 version = "0.1.0"
+dependencies = [
+ "domain",
+ "rocket",
+ "serde",
+]
 
 [[package]]
 name = "shlex"
