@@ -4,3 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+domain = { path = "../domain" }
+infrastructure = { path = "../infrastructure" }
+shared = { path = "../shared" }
+
+diesel = { version = "2.0", features = ["sqlite, "returning_clauses_for_sqlite_3_35"] }
+serde_json = "1.0"
+rocket = { version = "0.5.0", features = ["json"] }

@@ -7,10 +7,16 @@ use rocket::serde::json::Json;
 
 #[get("/")]
 pub fn list_events_handler() -> String {
-    todo!()
+    let posts: Vec<Event> = read::list_events();
+    let response = Response { body: ResponseBody::Events(events) };
+
+    serde_json::to_string(&response).unwrap()
 }
 
 #[get("/event/<event_id>")]
 pub fn list_event_handler(event_id: i32) -> Result<String, NotFound<String>> {
-    todo!()
+    let event = read::list_post(event_id)?;
+    let response = Response { body: ResponseBody::Event(event) };
+
+    Ok(serde_json::to_string(&response).unwrap())
 }
