@@ -2,11 +2,11 @@ name: Check_rust
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths:
       - '**.rs'
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths:
       - '**.rs'
       
