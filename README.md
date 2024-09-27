@@ -10,3 +10,9 @@ flowchart LR
     templating(tera) --> server
     server --> webserver(Caddy)
 ```
+
+# Set up
+
+(on Debian)
+
+Install libsqlite3-dev
