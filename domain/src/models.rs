@@ -5,6 +5,8 @@ use std::cmp::{Ord, Eq, PartialOrd, PartialEq};
 
 // Queryable will generate the code needed to load the struct from an SQL statement
 #[derive(Queryable, Serialize, Ord, Eq, PartialEq, PartialOrd)]
+#[diesel(table_name = events)]
+#[diesel(check_for_backend(diesel::sqlite::Sqlite))]
 pub struct Event {
     pub id: u32,
     pub name: String,
