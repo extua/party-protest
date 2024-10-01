@@ -5,8 +5,6 @@ diesel::table! {
         id -> Integer,
         name -> Text,
         description -> Text,
-        start_time -> Integer,
-        end_time -> Nullable<Integer>,
         location -> Nullable<Text>,
     }
 }
