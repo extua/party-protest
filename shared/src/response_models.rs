@@ -5,7 +5,7 @@ use rocket::serde::Serialize;
 pub enum ResponseBody {
     Message(String),
     Event(Event),
-    Event(Vec<Event>)
+    Events(Vec<Event>),
 }
 
 #[derive(Serialize)]
