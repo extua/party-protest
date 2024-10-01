@@ -7,5 +7,6 @@ fn rocket() -> _ {
         .mount("/api", routes![
             event_handler::list_events_handler, 
             event_handler::list_event_handler,
+            event_handler::create_event_handler,
         ])
 }
