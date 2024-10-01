@@ -1,14 +1,16 @@
-use shared::response_models::{Response, ResponseBody};
 use application::event::{create, read};
 use domain::models::{Event, NewEvent};
-use rocket::{get, post};
-use rocket::response::status::{NotFound, Created};
+use rocket::response::status::{Created, NotFound};
 use rocket::serde::json::Json;
+use rocket::{get, post};
+use shared::response_models::{Response, ResponseBody};
 
 #[get("/")]
 pub fn list_events_handler() -> String {
     let events: Vec<Event> = read::list_events();
-    let response = Response { body: ResponseBody::Events(events) };
+    let response = Response {
+        body: ResponseBody::Events(events),
+    };
 
     serde_json::to_string(&response).unwrap()
 }
@@ -16,7 +18,9 @@ pub fn list_events_handler() -> String {
 #[get("/event/<event_id>")]
 pub fn list_event_handler(event_id: i32) -> Result<String, NotFound<String>> {
     let event = read::list_event(event_id)?;
-    let response = Response { body: ResponseBody::Event(event) };
+    let response = Response {
+        body: ResponseBody::Event(event),
+    };
 
     Ok(serde_json::to_string(&response).unwrap())
 }

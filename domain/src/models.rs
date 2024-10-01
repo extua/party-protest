@@ -1,7 +1,7 @@
 use crate::schema::events;
 use diesel::prelude::*;
 use rocket::serde::{Deserialize, Serialize};
-use std::cmp::{Ord, Eq, PartialOrd, PartialEq};
+use std::cmp::{Eq, Ord, PartialEq, PartialOrd};
 
 // Queryable will generate the code needed to load the struct from an SQL statement
 #[derive(Queryable, Selectable, Serialize, Ord, Eq, PartialEq, PartialOrd)]
