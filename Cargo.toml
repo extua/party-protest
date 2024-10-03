@@ -7,3 +7,12 @@ members = [
   "shared",
 ]
 resolver = "2"
+
+# Flags for best release performance
+[profile.release]
+codegen-units = 1
+lto = "fat"
+
+# Build for native CPU
+[build]
+rustflags = ["-C", "target-cpu=native"]
