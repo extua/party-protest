@@ -15,4 +15,10 @@ flowchart LR
 
 (on Debian)
 
-Install libsqlite3-dev
+Install ~libsqlite3-dev~ this is just a cargo dependency.
+
+To generate database migration
+
+```sh
+diesel migration generate --diff-schema create_events
+```
