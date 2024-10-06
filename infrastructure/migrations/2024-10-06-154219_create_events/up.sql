@@ -2,5 +2,6 @@ CREATE TABLE events (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   "name" VARCHAR NOT NULL,
   "description" TEXT NOT NULL,
-  "location" TEXT
+  "location" TEXT,
+  "published" BOOLEAN NOT NULL DEFAULT false
 )

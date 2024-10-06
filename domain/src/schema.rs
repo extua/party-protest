@@ -6,5 +6,6 @@ diesel::table! {
         name -> Text,
         description -> Text,
         location -> Nullable<Text>,
+        published -> Bool,
     }
 }

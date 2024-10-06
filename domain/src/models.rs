@@ -12,6 +12,7 @@ pub struct Event {
     pub name: String,
     pub description: String,
     pub location: Option<String>,
+    pub published: bool,
 }
 
 #[derive(Insertable, Deserialize)]
@@ -21,4 +22,5 @@ pub struct NewEvent {
     pub name: String,
     pub description: String,
     pub location: Option<String>,
+    pub published: bool
 }
