@@ -1,4 +1,4 @@
-name: Check_rust
+name: Cargo check rust
 
 on:
   push:
@@ -17,17 +17,13 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Run sccache-cache
       uses: mozilla-actions/sccache-action@v0.0.5
     - uses: actions/checkout@v4
     - name: Check code
       run: cargo check
-    # - name: Run tests
-    #   run: cargo test
-    - name: Run sccache stat for check
-      shell: bash
-      run: ${SCCACHE_PATH} --show-stats
+    # - name: Run sccache stat for check
+    #   shell: bash
+    #   run: ${SCCACHE_PATH} --show-stats
