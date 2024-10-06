@@ -10,6 +10,8 @@ fn rocket() -> _ {
             event_handler::list_events_handler,
             event_handler::list_event_handler,
             event_handler::create_event_handler,
+            event_handler::publish_event_handler,
+            event_handler::delete_event_handler,
         ],
     )
 }
