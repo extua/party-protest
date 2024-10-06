@@ -44,7 +44,7 @@ pub fn publish_event_handler(event_id: i32) -> Result<String, NotFound<String>> 
 pub fn delete_event_handler(event_id: i32) -> Result<String, NotFound<String>> {
     let events = delete::delete_event(event_id)?;
     let response = Response {
-        body: ResponseBody::Event(event),
+        body: ResponseBody::Events(events),
     };
 
     Ok(serde_json::to_string(&response).unwrap())
