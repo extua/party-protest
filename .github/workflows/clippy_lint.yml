@@ -22,7 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run sccache-cache
-      - uses: mozilla-actions/sccache-action@v0.0.5
+        uses: mozilla-actions/sccache-action@v0.0.5
       - uses: actions/checkout@v4
       - name: Run Clippy
         run: cargo clippy --all-targets --all-features
+      # - name: Run sccache stat for check
+      #   shell: bash
+      #   run: ${SCCACHE_PATH} --show-stats
