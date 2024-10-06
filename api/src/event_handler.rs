@@ -1,4 +1,4 @@
-use application::event::{create, read, publish, delete};
+use application::event::{create, delete, publish, read};
 use domain::models::{Event, NewEvent};
 use rocket::response::status::{Created, NotFound};
 use rocket::serde::json::Json;
@@ -32,8 +32,10 @@ pub fn create_event_handler(event: Json<NewEvent>) -> Created<String> {
 
 #[get("/publish/<event_id>")]
 pub fn publish_event_handler(event_id: i32) -> Result<String, NotFound<String>> {
-    let event = publish::publish_event(event_id)?; 
-    let response = Response { body: ResponseBody::Event(event) };
+    let event = publish::publish_event(event_id)?;
+    let response = Response {
+        body: ResponseBody::Event(event),
+    };
 
     Ok(serde_json::to_string(&response).unwrap())
 }
@@ -41,7 +43,9 @@ pub fn publish_event_handler(event_id: i32) -> Result<String, NotFound<String>> 
 #[get("/delete/<event_id>")]
 pub fn delete_event_handler(event_id: i32) -> Result<String, NotFound<String>> {
     let events = delete::delete_event(event_id)?;
-    let response = Response { body: ResponseBody::Event(event) };
+    let response = Response {
+        body: ResponseBody::Event(event),
+    };
 
     Ok(serde_json::to_string(&response).unwrap())
 }

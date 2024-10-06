@@ -20,5 +20,5 @@ pub struct Event {
 pub struct NewEvent {
     pub name: String,
     pub description: String,
-    pub location: Option<String>
+    pub location: Option<String>,
 }
