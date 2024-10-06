@@ -1,5 +1,6 @@
 {
     "name": "test event",
-    "description": "this is a test event",
-    "location": "a field"
+    "description": "this is a published test event",
+    "location": "a field",
+    "published": true
 }
