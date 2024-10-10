@@ -1,8 +1,8 @@
 pub mod data {
-    use chrono::{DateTime, Local};
     use native_db::{native_db, ToKey};
     use native_model::{native_model, Model};
     use serde::{Deserialize, Serialize};
+    use chrono::{serde, DateTime, Local};
     use uuid::Uuid;
 
     pub type Event = v1::Event;
@@ -19,8 +19,8 @@ pub mod data {
             pub name: String,
             pub description: String,
             pub location: Option<String>,
-            pub published: DateTime,
-            pub updated: DateTime,
+            pub published: DateTime<Local>,
+            pub updated: DateTime<Local>,
         }
     }
 }
