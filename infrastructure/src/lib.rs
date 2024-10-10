@@ -1,11 +1,15 @@
-use diesel::prelude::*;
-use dotenvy::dotenv;
-use std::env;
+use native_db::*;
+use once_cell::sync::Lazy;
+use domain::models;
 
-pub fn establish_connection() -> SqliteConnection {
-    dotenv().ok();
+static MODELS: Lazy<Models> = Lazy::new(|| {
+    let mut models = Models::new();
+    models.define::<data::v1::Event>().unwrap();
+    models
+ });
 
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    SqliteConnection::establish(&database_url)
-        .unwrap_or_else(|_| panic!("Error connecting to {}", database_url))
+fn main() -> Result<(), db_type::Error> {
+    // Create the database
+    let db = Builder::new().create_in_memory(&MODELS)?;
+    Ok(())
 }
