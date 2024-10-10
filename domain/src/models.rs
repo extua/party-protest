@@ -1,26 +1,26 @@
-use crate::schema::events;
-use diesel::prelude::*;
-use rocket::serde::{Deserialize, Serialize};
-use std::cmp::{Eq, Ord, PartialEq, PartialOrd};
+pub mod data {
+    use chrono::{DateTime, Local};
+    use native_db::{native_db, ToKey};
+    use native_model::{native_model, Model};
+    use serde::{Deserialize, Serialize};
+    use uuid::Uuid;
 
-// Queryable will generate the code needed to load the struct from an SQL statement
-#[derive(Queryable, Selectable, Serialize, Ord, Eq, PartialEq, PartialOrd)]
-#[diesel(table_name = events)]
-#[diesel(check_for_backend(diesel::sqlite::Sqlite))]
-pub struct Event {
-    pub id: i32,
-    pub name: String,
-    pub description: String,
-    pub location: Option<String>,
-    pub published: bool,
-}
+    pub type Event = v1::Event;
 
-#[derive(Insertable, Deserialize)]
-#[serde(crate = "rocket::serde")]
-#[diesel(table_name = events)]
-pub struct NewEvent {
-    pub name: String,
-    pub description: String,
-    pub location: Option<String>,
-    pub published: bool
+    pub mod v1 {
+        use super::*;
+
+        #[derive(Serialize, Deserialize, Debug)]
+        #[native_model(id = 1, version = 1)]
+        #[native_db]
+        pub struct Event {
+            #[primary_key]
+            pub id: Uuid,
+            pub name: String,
+            pub description: String,
+            pub location: Option<String>,
+            pub published: DateTime,
+            pub updated: DateTime,
+        }
+    }
 }
