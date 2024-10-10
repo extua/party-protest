@@ -1,12 +1,12 @@
+use domain::models::data::v1::Event;
 use native_db::*;
 use once_cell::sync::Lazy;
-use domain::models::data::v1::Event;
 
 static MODELS: Lazy<Models> = Lazy::new(|| {
     let mut models = Models::new();
     models.define::<Event>().unwrap();
     models
- });
+});
 
 fn main() -> Result<(), db_type::Error> {
     // Create the database
