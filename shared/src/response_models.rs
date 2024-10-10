@@ -1,4 +1,4 @@
-use domain::models::Event;
+use domain::models::data::v1::Event;
 use rocket::serde::Serialize;
 
 #[derive(Serialize)]

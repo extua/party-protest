@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use domain::models::{Event, NewEvent};
+use domain::models::data::v1::Event;
 use infrastructure::establish_connection;
 use rocket::response::status::Created;
 use rocket::serde::json::Json;

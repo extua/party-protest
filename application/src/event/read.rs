@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use domain::models::Event;
+use domain::models::data::v1::Event;
 use infrastructure::establish_connection;
 use rocket::response::status::NotFound;
 use shared::response_models::{Response, ResponseBody};

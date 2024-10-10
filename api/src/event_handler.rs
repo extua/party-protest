@@ -1,5 +1,5 @@
 use application::event::{create, delete, publish, read};
-use domain::models::{Event, NewEvent};
+use domain::models::data::v1::Event;
 use rocket::response::status::{Created, NotFound};
 use rocket::serde::json::Json;
 use rocket::{get, post};
